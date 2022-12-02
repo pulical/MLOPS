@@ -37,14 +37,14 @@ pipeline {
     stage('Clone') {
       steps {
         container('git') {
-          git branch: 'master', changelog: false, poll: false, url: 'https://github.com/pulical/MLOPS.git'
+          git branch: 'master', changelog: false, poll: false, url: 'https://github.com/kalpitrcc/MLOPS.git'
         }
       }
     }   
     stage('Build-Docker-Image') {
       steps {
         container('docker') {
-          sh 'docker build -t modeltraining:$BUILD_NUMBER .'
+          sh 'docker build -t devsds/modeltraining:$BUILD_NUMBER .'
         }
       }
     }
@@ -59,7 +59,7 @@ pipeline {
      stage('Push-Image-to-DockerHub') {
       steps {
         container('docker') {
-          sh 'docker push modeltraining:$BUILD_NUMBER'
+          sh 'docker push devsds/modeltraining:$BUILD_NUMBER'
       }
     }
    }
@@ -72,7 +72,7 @@ pipeline {
         spec:
           containers:
           - name: modeltraining
-            image: "modeltraining:${BUILD_NUMBER}"
+            image: "devsds/modeltraining:${BUILD_NUMBER}"
             command:
             - cat
             tty: true
@@ -82,7 +82,7 @@ pipeline {
       
       steps {
         container('modeltraining') {
-          sh 'ls -lr /root'
+          sh 'ls -lrt ./'
         }
       }
     }
