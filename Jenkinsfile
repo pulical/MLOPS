@@ -79,11 +79,7 @@ pipeline {
         """.stripIndent()
         }
       }
-      steps {
-        container('modeltraining') {
-          sh 'ls -lrt'
-        }
-      }
+      
       steps {
         container('modeltraining') {
           sh 'ls -lr /root'
