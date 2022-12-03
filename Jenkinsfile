@@ -87,7 +87,7 @@ pipeline {
 	  sh 'pwd'
 	  sh 'python3 preprocessing.py'
 	  sh 'python3 train.py'
-	  sh 'ls -ltr'
+	  sh 'find -name train_metadata.json'
 	  sh 'date'
         }
       }
