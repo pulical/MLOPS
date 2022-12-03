@@ -83,11 +83,10 @@ pipeline {
       steps {
         container('modeltraining') {
 	  sh 'python3 --version'
-	  sh 'python --version'	
           sh 'chmod +x preprocessing.py'
 	  sh 'pwd'
-	  sh 'find / -name train.csv'
 	  sh 'python3 preprocessing.py'
+	  sh 'find / -name train.csv'
 	  sh 'ls -ltr'
 	  sh 'date'
         }
