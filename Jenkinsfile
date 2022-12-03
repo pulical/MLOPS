@@ -37,7 +37,7 @@ pipeline {
     stage('Clone') {
       steps {
         container('git') {
-          git branch: 'master', changelog: false, poll: false, url: 'https://github.com/kalpitrcc/MLOPS.git'
+          git branch: 'master', changelog: false, poll: false, url: 'https://github.com/pulical/MLOPS.git'
         }
       }
     }   
@@ -63,7 +63,7 @@ pipeline {
       }
     }
    }
-   stage('Model') {
+   stage('Pre-Processing Test') {
       agent {
         kubernetes {
           yaml """
@@ -82,7 +82,7 @@ pipeline {
       
       steps {
         container('modeltraining') {
-          sh 'ls -lrt ./'
+          sh 'python3 preprocessing.py ./'
         }
       }
     }
