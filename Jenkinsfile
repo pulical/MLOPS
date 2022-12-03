@@ -86,7 +86,7 @@ pipeline {
 	  sh 'python --version'	
           sh 'chmod +x preprocessing.py'
 	  sh 'pwd'
-	  sh 'find --name train.csv'
+	  sh 'find -name train.csv'
 	  sh 'python3 preprocessing.py'
 	  sh 'ls -ltr'
 	  sh 'date'
