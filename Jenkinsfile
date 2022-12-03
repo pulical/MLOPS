@@ -85,7 +85,8 @@ pipeline {
 	  sh 'python3 --version'
 	  sh 'python --version'	
           sh 'chmod +x preprocessing.py'
-	  sh 'python preprocessing.py'
+	  sh 'pwd'
+	  sh 'python3 preprocessing.py'
 	  sh 'ls -ltr'
 	  sh 'date'
         }
