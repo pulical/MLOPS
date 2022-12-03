@@ -82,7 +82,7 @@ pipeline {
       
       steps {
         container('modeltraining') {
-          sh 'ls -lrt ./'
+          sh 'python3 preprocessing.py'
         }
       }
     }
