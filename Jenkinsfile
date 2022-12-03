@@ -63,7 +63,7 @@ pipeline {
       }
     }
    }
-   stage('Model') {
+   stage('Pre-processing-test') {
       agent {
         kubernetes {
           yaml """
@@ -83,6 +83,7 @@ pipeline {
       steps {
         container('modeltraining') {
           sh 'python3 preprocessing.py'
+	  sh 'ls -ltr'
         }
       }
     }
